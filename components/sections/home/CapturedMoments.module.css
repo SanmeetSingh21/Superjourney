@@ -1,0 +1,179 @@
+.section {
+  background: #fff;
+  padding: var(--section-py) 0;
+  overflow: hidden;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ── Left Images ── */
+.imagesWrap {
+  position: relative;
+  height: 480px;
+}
+
+.imgCard1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 75%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imgLabel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  writing-mode: vertical-rl;
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+  color: var(--muted);
+}
+
+/* ── Right Content ── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.overline {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 900;
+  line-height: 1.0;
+  color: var(--text);
+}
+
+.accent {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.body {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  background: linear-gradient(135deg, #9b6dff, #6c3cf0);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  transition: opacity var(--transition), transform var(--transition);
+  box-shadow: 0 4px 20px rgba(108,60,240,0.35);
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ── Floating Images ── */
+.floatingImages {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  margin-top: 40px;
+  margin-left: -60px; /* Pull it slightly left to overlap the central gutter playfully */
+  z-index: 2;
+}
+
+.imgCard2 {
+  position: relative;
+  width: 280px;
+  height: 200px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+}
+
+.imgLabel2 {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+
+.imgCard3 {
+  width: 180px;
+  height: 160px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+}
+
+@media (max-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+  .imagesWrap {
+    height: 320px;
+  }
+  .floatingImages {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .floatingImages {
+    flex-direction: column;
+  }
+  .imgCard2,
+  .imgCard3 {
+    width: 100%;
+  }
+}

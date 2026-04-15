@@ -1,0 +1,36 @@
+.card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.hoverable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ── Variants ── */
+.default {
+  background: var(--card);
+  box-shadow: var(--shadow-card);
+}
+
+.flat {
+  background: var(--chip-bg);
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.dark {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Padding ── */
+.pad-none { padding: 0; }
+.pad-sm   { padding: 16px; }
+.pad-md   { padding: 24px; }
+.pad-lg   { padding: 32px; }

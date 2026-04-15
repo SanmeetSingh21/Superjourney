@@ -1,0 +1,41 @@
+:root {
+    /* Colors */
+    --bg: #f5f1ea;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --primary: #6c3cf0;
+    --primary-dark: #5228d4;
+    --accent: #e07a2f;
+    --card: #ffffff;
+    --footer-bg: #1c120d;
+    --footer-text: #f5f1ea;
+    --border: #e8e2d9;
+    --chip-bg: #edeae4;
+
+    /* Typography */
+    --font-heading: 'Fraunces', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+    /* Sizing */
+    --container: 1200px;
+    --navbar-h: 68px;
+
+    /* Radius */
+    --radius-xl: 24px;
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --radius-pill: 999px;
+
+    /* Spacing */
+    --section-py: 100px;
+    --section-py-sm: 60px;
+    --gap-grid: 24px;
+
+    /* Shadows */
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.07);
+    --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.13);
+
+    /* Transitions */
+    --transition: 0.25s ease;
+}

@@ -1,0 +1,205 @@
+.footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding-top: 72px;
+}
+
+/* ── Main Grid ── */
+.inner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 64px;
+}
+
+/* ── Brand Column ── */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.logoSuper {
+  color: var(--footer-text);
+}
+
+.logoJourneys {
+  color: var(--accent);
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(245, 241, 234, 0.55);
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+.socials {
+  display: flex;
+  gap: 12px;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  color: rgba(245, 241, 234, 0.5);
+  border: 1px solid rgba(245, 241, 234, 0.12);
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.socialLink:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Column Labels ── */
+.colLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 234, 0.35);
+  margin-bottom: 20px;
+}
+
+/* ── Nav Column ── */
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navLink {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(245, 241, 234, 0.7);
+  padding: 5px 0;
+  transition: color var(--transition);
+}
+
+.navLink:hover {
+  color: var(--accent);
+}
+
+/* ── Contact Column ── */
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contactList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(245, 241, 234, 0.7);
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.contactIcon {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--accent);
+}
+
+/* ── Bottom Bar ── */
+.bottomBar {
+  border-top: 1px solid rgba(245, 241, 234, 0.08);
+  padding: 20px 0;
+}
+
+.bottomInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copyright {
+  font-size: 11px;
+  font-family: var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 234, 0.25);
+}
+
+.legal {
+  display: flex;
+  gap: 24px;
+}
+
+.legalLink {
+  font-size: 11px;
+  font-family: var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 234, 0.25);
+  transition: color var(--transition);
+}
+
+.legalLink:hover {
+  color: rgba(245, 241, 234, 0.6);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-bottom: 48px;
+  }
+  .brand {
+    grid-column: auto;
+  }
+  .bottomInner {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}

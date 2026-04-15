@@ -1,0 +1,444 @@
+.section {
+  background: var(--bg);
+  padding-bottom: var(--section-py);
+}
+
+/* ── Ticker ── */
+.ticker {
+  background: var(--accent);
+  padding: 10px 0;
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.tickerTrack {
+  display: flex;
+  gap: 0;
+  animation: ticker 24s linear infinite;
+  white-space: nowrap;
+}
+
+.tickerItem {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Inner ── */
+.inner {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: calc(var(--navbar-h) + 24px);
+}
+
+.sidebarHeading {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.filterLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filterBtn {
+  text-align: left;
+  padding: 10px 14px;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filterBtn:hover {
+  color: var(--text);
+  background: var(--chip-bg);
+}
+
+.filterBtnActive {
+  background: var(--text);
+  color: var(--bg);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ── Content ── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Search ── */
+.searchWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text);
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 14px 56px 14px 22px;
+  outline: none;
+  transition: border-color var(--transition);
+  box-shadow: var(--shadow-card);
+}
+
+.searchInput::placeholder { color: #b0a898; }
+.searchInput:focus { border-color: var(--primary); }
+
+.searchBtn {
+  position: absolute;
+  right: 8px;
+  width: 38px;
+  height: 38px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+.searchBtn:hover { opacity: 0.85; }
+
+/* ── Journeys Header ── */
+.journeysHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.journeysMeta {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.journeysTitle {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.journeysCount {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ── Image ── */
+.imageWrap {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .image { transform: scale(1.04); }
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 2;
+  color: #fff;
+}
+
+.orange { background: var(--accent); }
+.green  { background: #22a566; }
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+}
+
+.imageText {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 2;
+}
+
+.imageTitle {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.imageRoute {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-top: 2px;
+}
+
+/* ── Card Body ── */
+.cardBody {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.metaRating { color: var(--accent); }
+
+.cardDesc {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  border: 2px solid var(--card);
+  margin-left: -6px;
+}
+
+.avatar:first-child { margin-left: 0; }
+
+.exploreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: gap var(--transition);
+}
+
+.exploreBtn:hover { gap: 8px; }
+
+/* ── Boarding Pass ── */
+.boardingPass {
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--border);
+}
+
+.boardingLabel {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.boardingRoute {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.routeCode {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.routeIcon {
+  color: var(--accent);
+  font-size: 14px;
+}
+
+.firstClass {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+}
+
+.qr {
+  width: 40px;
+  height: 40px;
+  background:
+    repeating-linear-gradient(0deg, #ccc 0, #ccc 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(90deg, #ccc 0, #ccc 2px, transparent 2px, transparent 6px);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.cardDetails {
+  display: flex;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .filters {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .filterBtn {
+    padding: 8px 14px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,234 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: var(--navbar-h);
+  background: var(--bg);
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(245, 241, 234, 0.8);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.titleArea {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  transition: var(--transition);
+}
+.backBtn:hover {
+  color: var(--accent);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+}
+
+.liveIndicator {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #059669; /* green */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #059669;
+}
+
+.indicators {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.chatArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px 24px 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.messageRow {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 32px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #e5ded2; /* slight darker than bg */
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.bubble {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  padding: 24px;
+  border-radius: 20px;
+  border-top-left-radius: 4px;
+  line-height: 1.6;
+}
+
+.bubble p {
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.time {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  display: block;
+  margin-top: 16px;
+}
+
+/* Input Area */
+.inputArea {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to top, var(--bg) 60%, transparent);
+}
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 12px;
+}
+
+.input {
+  flex: 1;
+  padding: 20px 24px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--text);
+  outline: none;
+  transition: var(--transition);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: var(--shadow-card);
+}
+
+.sendBtn {
+  background: linear-gradient(135deg, #6c3cf0, #b12596);
+  color: white;
+  padding: 20px 32px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 24px rgba(108, 60, 240, 0.3);
+  transition: var(--transition);
+}
+
+.sendBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(108, 60, 240, 0.4);
+}
+
+.disclaimer {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (max-width: 768px) {
+  .topBar {
+    padding: 12px 16px;
+  }
+  .indicators {
+    display: none;
+  }
+  .messageRow {
+    gap: 16px;
+  }
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+  .bubble {
+    padding: 16px;
+  }
+  .inputWrap {
+    flex-direction: column;
+  }
+  .sendBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
