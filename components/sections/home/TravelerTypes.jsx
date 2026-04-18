@@ -1,6 +1,4 @@
-'use client'
-
-import { useState } from 'react'
+import Link from 'next/link'
 import { FiArrowRight } from 'react-icons/fi'
 import styles from './TravelerTypes.module.css'
 
@@ -25,7 +23,6 @@ const types = [
     travelers: '1–4 Travelers',
     title: 'Food and culture focused',
     image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80',
-    featured: false,
   },
   {
     id: 4,
@@ -37,8 +34,6 @@ const types = [
 ]
 
 export default function TravelerTypes() {
-  const [active, setActive] = useState(3)
-
   return (
     <section className={styles.section}>
       <div className={`container ${styles.inner}`}>
@@ -62,11 +57,7 @@ export default function TravelerTypes() {
         {/* Cards */}
         <div className={styles.grid}>
           {types.map((type) => (
-            <div
-              key={type.id}
-              className={`${styles.card} ${active === type.id ? styles.active : ''}`}
-              onClick={() => setActive(type.id)}
-            >
+            <Link key={type.id} href="/get-inspired" className={styles.card}>
               <img src={type.image} alt={type.title} className={styles.image} />
               <div className={styles.overlay} />
 
@@ -78,17 +69,13 @@ export default function TravelerTypes() {
 
               {/* Bottom content */}
               <div className={styles.cardBottom}>
-                <h3 className={`${styles.cardTitle} ${active === type.id ? styles.cardTitleActive : ''}`}>
-                  {type.title}
-                </h3>
-                {active === type.id && (
-                  <button className={styles.selectBtn}>
-                    <FiArrowRight size={14} />
-                    Select Persona
-                  </button>
-                )}
+                <h3 className={styles.cardTitle}>{type.title}</h3>
+                <span className={styles.selectBtn}>
+                  <FiArrowRight size={14} />
+                  Select Persona
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

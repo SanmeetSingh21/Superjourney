@@ -25,11 +25,12 @@
 
 .overline {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
+  margin-bottom: -8px;
 }
 
 .heading {
@@ -59,11 +60,11 @@
   line-height: 1.7;
 }
 
-/* ── Grid ── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+/* ── Cards Container ── */
+.cardsContainer {
+  position: relative;
+  width: 100%;
+  /* height set via JS once measured */
 }
 
 /* ── Card ── */
@@ -75,12 +76,13 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  transition: transform var(--transition), box-shadow var(--transition);
+  min-height: 180px;
+  /* position/width/left/top/transition set inline by JS */
+  box-sizing: border-box;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
+.card:hover .cardTitle {
+  color: var(--accent);
 }
 
 .cardTop {
@@ -126,6 +128,7 @@
   font-weight: 800;
   color: var(--text);
   line-height: 1.2;
+  transition: color 0.25s ease;
 }
 
 .cardDesc {
@@ -149,13 +152,26 @@
     padding-top: 16px;
   }
 
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+  .cardsContainer {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+    height: auto !important;
+  }
+
+  .card {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
 @media (max-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .cardsContainer {
+    grid-template-columns: 1fr !important;
   }
 }

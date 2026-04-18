@@ -102,15 +102,6 @@ export default function AIWidget() {
   return (
     <section className={styles.section}>
 
-      {/* Ticker */}
-      <div className={styles.ticker}>
-        <div className={styles.tickerTrack}>
-          {Array(8).fill('• REAL TRAVEL INTELLIGENCE • DISCOVER YOUR NEXT CHAPTER • PLAN BOLDLY • TRAVEL SMART • AI-POWERED ITINERARIES • REAL TRAVEL').map((t, i) => (
-            <span key={i} className={styles.tickerItem}>{t}</span>
-          ))}
-        </div>
-      </div>
-
       <div className={`container ${styles.inner}`}>
 
         {/* Left Sidebar */}
@@ -136,6 +127,14 @@ export default function AIWidget() {
 
         {/* Right Content */}
         <div className={styles.content}>
+          {/* Ticker – contained above search bar */}
+          <div className={styles.ticker}>
+            <div className={styles.tickerTrack}>
+              {Array(8).fill('• DISCOVER YOUR NEXT CHAPTER • PLAN BOLDLY • TRAVEL SMART • AI-POWERED ITINERARIES • REAL TRAVEL INTELLIGENCE •').map((t, i) => (
+                <span key={i} className={styles.tickerItem}>{t}</span>
+              ))}
+            </div>
+          </div>
           {/* Search */}
           <div className={styles.searchWrap}>
             <input

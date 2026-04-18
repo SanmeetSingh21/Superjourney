@@ -20,11 +20,12 @@
 
 .overline {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
+  margin-bottom: -16px;
 }
 
 .heading {
@@ -75,7 +76,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--accent);
 }
 
 /* ── Right ── */
@@ -110,8 +111,8 @@
 /* ── Badge ── */
 .badge {
   position: absolute;
-  top: -20px;
-  right: 60px;
+  top: -40px;
+  right: 20px;
   background: var(--accent);
   color: #fff;
   width: 80px;
@@ -135,8 +136,8 @@
 .globe {
   position: absolute;
   bottom: -60px;
-  right: -80px;
-  font-size: 220px;
+  right: -150px;
+  font-size: 320px;
   color: rgba(255, 255, 255, 0.04);
   pointer-events: none;
   line-height: 1;

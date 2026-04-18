@@ -1,6 +1,9 @@
-import styles from './Features.module.css'
+'use client'
+
+import { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { BsAirplaneFill, BsPeopleFill, BsChatSquareFill, BsBookFill, BsWalletFill, BsCollectionFill } from 'react-icons/bs'
+import styles from './Features.module.css'
 
 const features = [
   {
@@ -35,7 +38,64 @@ const features = [
   },
 ]
 
+// Anti-clockwise path through a 3×2 grid:
+// slots:  [0][1][2]
+//         [3][4][5]
+// CCW:  0→3→4→5→2→1→0
+// CCW_NEXT[slot] = where a card in that slot moves next
+const CCW_NEXT = [3, 0, 1, 4, 5, 2]
+
+const GAP = 40
+
 export default function Features() {
+  const containerRef = useRef(null)
+  // cardSlots[i] = which grid slot card i currently occupies
+  const [cardSlots, setCardSlots] = useState([0, 1, 2, 3, 4, 5])
+  const [dims, setDims] = useState(null) // { cw, ch }
+  const [ready, setReady] = useState(false)
+
+  // Measure once cards are rendered in static layout
+  useLayoutEffect(() => {
+    const measure = () => {
+  if (!containerRef.current) return
+  const w = containerRef.current.offsetWidth
+  const cw = (w - GAP * 2) / 3
+  const ch = 220  // ← tweak this value
+  setDims({ cw, ch })
+}
+
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [])
+
+  // Enable transitions one frame after dims are set (prevents initial jump)
+  useEffect(() => {
+    if (dims) {
+      const id = requestAnimationFrame(() => setReady(true))
+      return () => cancelAnimationFrame(id)
+    }
+  }, [dims])
+
+  // Rotate all cards one step CCW every 2.5s
+  useEffect(() => {
+    if (!ready) return
+    const id = setInterval(() => {
+      setCardSlots(prev => prev.map(slot => CCW_NEXT[slot]))
+    }, 2500)
+    return () => clearInterval(id)
+  }, [ready])
+
+  const getPos = (slot) => {
+    if (!dims) return { left: 0, top: 0 }
+    const col = slot % 3
+    const row = Math.floor(slot / 3)
+    return {
+      left: col * (dims.cw + GAP),
+      top: row * (dims.ch + GAP),
+    }
+  }
+
   return (
     <section className={styles.section}>
       <div className={`container ${styles.inner}`}>
@@ -56,20 +116,41 @@ export default function Features() {
           </div>
         </div>
 
-        {/* Grid */}
-        <div className={styles.grid}>
-          {features.map((f) => (
-            <div key={f.title} className={styles.card}>
-              <div className={styles.cardTop}>
-                <span className={styles.iconWrap}>{f.icon}</span>
-                <button className={styles.arrowBtn} aria-label="Learn more">
-                  <FiArrowUpRight size={14} />
-                </button>
+        {/* Cards container */}
+        <div
+          ref={containerRef}
+          className={styles.cardsContainer}
+          style={dims ? { height: dims.ch * 2 + GAP } : undefined}
+        >
+          {features.map((f, i) => {
+            const { left, top } = getPos(cardSlots[i])
+            return (
+              <div
+                key={i}
+                data-card
+                className={styles.card}
+                style={dims ? {
+                  position: 'absolute',
+                  width: dims.cw,
+                  height: dims.ch,
+                  left,
+                  top,
+                  transition: ready
+                    ? 'left 0.7s cubic-bezier(0.4,0,0.2,1), top 0.7s cubic-bezier(0.4,0,0.2,1)'
+                    : 'none',
+                } : undefined}
+              >
+                <div className={styles.cardTop}>
+                  <span className={styles.iconWrap}>{f.icon}</span>
+                  <button className={styles.arrowBtn} aria-label="Learn more">
+                    <FiArrowUpRight size={14} />
+                  </button>
+                </div>
+                <h3 className={styles.cardTitle}>{f.title}</h3>
+                <p className={styles.cardDesc}>{f.desc}</p>
               </div>
-              <h3 className={styles.cardTitle}>{f.title}</h3>
-              <p className={styles.cardDesc}>{f.desc}</p>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
       </div>

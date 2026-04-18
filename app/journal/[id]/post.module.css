@@ -1,0 +1,257 @@
+.page {
+  background: #fdfaf7; /* Off-white / cream background for editorial feel */
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+.nav {
+  position: sticky;
+  top: var(--navbar-h, 70px);
+  z-index: 90; /* Sit below main navbar if needed, or above depending on transparency */
+  background: rgba(253, 250, 247, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
+}
+
+.navVisible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.navHidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: all var(--transition);
+}
+
+.backBtn:hover {
+  color: var(--accent);
+  transform: translateX(-4px);
+}
+
+.header {
+  padding-top: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.category {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 32px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.authorBrief {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.authorAvatarSmall {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorInfoSmall {
+  text-align: left;
+}
+
+.authorNameSmall {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.publishMeta {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  background: var(--border);
+  border-radius: 50%;
+}
+
+/* ── Hero ── */
+.hero {
+  max-width: 1200px;
+  margin: 0 auto 80px;
+  padding: 0 24px;
+}
+
+.heroImg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 32px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* ── Article Content ── */
+.articleBody {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.paragraph {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.8;
+  color: #2D2D2D;
+  margin-bottom: 40px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.paragraph:first-of-type::first-letter {
+  font-size: 80px;
+  float: left;
+  margin-top: 10px;
+  margin-right: 16px;
+  line-height: 0.8;
+  font-weight: 900;
+  color: var(--text);
+  font-family: var(--font-heading);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 60px 0 24px;
+}
+
+.inlineImgWrap {
+  margin: 60px -100px; /* Bleeds out slightly from content width */
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .inlineImgWrap {
+    margin: 40px -24px;
+  }
+}
+
+.inlineImg {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  margin-bottom: 16px;
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ── Author Bio ── */
+.authorBioCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px;
+  margin-top: 100px;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.authorBioAvatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorBioName {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.authorBioText {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ── CTA ── */
+.footerCTA {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.exploreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 48px;
+  background: var(--text);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  transition: transform var(--transition);
+}
+
+.exploreBtn:hover {
+  transform: translateY(-4px);
+}

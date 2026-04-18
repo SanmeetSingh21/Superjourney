@@ -5,8 +5,9 @@
   padding: 80px 0 60px;
 }
 
+
 .heroInner {
-  max-width: 700px;
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -14,19 +15,21 @@
 
 .overline {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
+  margin-bottom: -20px;
 }
 
 .heroHeading {
   font-family: var(--font-heading);
-  font-size: clamp(36px, 5vw, 60px);
+  font-size: clamp(56px, 5vw, 80px);
   font-weight: 900;
   line-height: 1.1;
   color: var(--text);
+  max-width: 1000px;
 }
 
 .heroParagraphs {
@@ -37,7 +40,7 @@
 
 .heroParagraphs p {
   font-family: var(--font-heading);
-  font-size: 16px;
+  font-size: 24px;
   font-style: italic;
   color: var(--text);
   line-height: 1.75;
@@ -45,7 +48,7 @@
 
 .discoverLink {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -72,7 +75,7 @@
 .founderImage {
   border-radius: var(--radius-xl);
   overflow: hidden;
-  aspect-ratio: 4/3;
+  aspect-ratio: 5/7;
 }
 
 .founderImg {
@@ -90,16 +93,17 @@
 
 .overlineSmall {
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
+  margin-bottom: -10px;
 }
 
 .founderName {
   font-family: var(--font-heading);
-  font-size: 36px;
+  font-size: 46px;
   font-weight: 800;
   color: var(--text);
 }
@@ -112,7 +116,7 @@
 
 .founderText p {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 20px;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -123,13 +127,14 @@
 }
 
 .philosophyInner {
-  background: var(--chip-bg);
+  background: #F1EADE;
   border-radius: var(--radius-xl);
   padding: 56px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   max-width: 780px;
+  box-shadow: 12px 24px 60px rgba(0,0,0,0.15);
 }
 
 .philosophyHeading {
@@ -203,7 +208,7 @@
   align-items: flex-start;
   gap: 12px;
   padding: 14px 18px;
-  background: var(--chip-bg);
+  background: #F1EADE;
   border-radius: var(--radius-md);
   font-family: var(--font-body);
   font-size: 11px;

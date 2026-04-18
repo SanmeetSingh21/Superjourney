@@ -1,73 +1,99 @@
-import Link from 'next/link'
-import styles from './planner.module.css'
-import { BsChevronLeft, BsGlobe, BsStars, BsRobot, BsSend } from 'react-icons/bs'
+'use client'
 
-export const metadata = {
-  title: 'AI Journey Planner | SuperJourneys',
-  description: 'Plan your perfect itinerary with AI.',
-}
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { FiChevronLeft, FiGlobe, FiZap, FiSend } from 'react-icons/fi'
+import { PiRobotBold } from 'react-icons/pi'
+import styles from './planner.module.css'
 
 export default function PlannerPage() {
+  const fullText = "Welcome to the SuperJourneys AI Planner. Describe your dream trip — where you want to go, what you love to do, and your preferred pace. I'll craft a bespoke itinerary just for you."
+  const [displayText, setDisplayText] = useState('')
+  const [isTyping, setIsTyping] = useState(true)
+
+  useEffect(() => {
+    let index = 0
+    const interval = setInterval(() => {
+      setDisplayText(fullText.slice(0, index))
+      index++
+      if (index > fullText.length) {
+        clearInterval(interval)
+        setIsTyping(false)
+      }
+    }, 20)
+    return () => clearInterval(interval)
+  }, [])
+
+  const messages = [
+    {
+      role: 'assistant',
+      content: displayText,
+      time: '02 : 00 AM'
+    }
+  ]
+
+
   return (
-    <div className={styles.page}>
+    <main className={styles.page}>
       
-      {/* Top Bar */}
+      {/* ── Sub-Navigation ── */}
       <header className={styles.topBar}>
         <div className={styles.titleArea}>
           <Link href="/" className={styles.backBtn}>
-            <BsChevronLeft size={20} />
+            <FiChevronLeft size={24} />
           </Link>
-          <div className={styles.title}>
-            AI Journey Planner
-            <span className={styles.liveIndicator}>
+          <div>
+            <h1 className={styles.title}>AI Journey Planner</h1>
+            <div className={styles.liveIndicator}>
               <span className={styles.liveDot}></span>
               LIVE INTELLIGENCE
-            </span>
+            </div>
           </div>
         </div>
 
         <div className={styles.indicators}>
           <div className={styles.indicator}>
-            <BsGlobe size={14} /> GLOBAL DATA
+            <FiGlobe size={14} /> GLOBAL DATA
           </div>
           <div className={styles.indicator}>
-            <BsStars size={14} /> PREMIUM ENGINE
+            <FiZap size={14} /> PREMIUM ENGINE
           </div>
         </div>
       </header>
 
-      {/* Chat Area */}
-      <main className={styles.chatArea}>
-        <div className={styles.messageRow}>
-          <div className={styles.avatar}>
-            <BsRobot size={24} />
+      {/* ── Chat Canvas ── */}
+      <div className={styles.chatArea}>
+        {messages.map((msg, index) => (
+          <div key={index} className={styles.messageRow}>
+            <div className={styles.avatar}>
+              <PiRobotBold size={24} />
+            </div>
+            <div className={styles.bubble}>
+              <p>{msg.content}</p>
+              <span className={styles.time}>{msg.time}</span>
+            </div>
           </div>
-          <div className={styles.bubble}>
-            <p>
-              Welcome to the SuperJourneys AI Planner. Describe your dream trip — where you want to go, what you love to do, and your preferred pace. I'll craft a bespoke itinerary just for you.
-            </p>
-            <span className={styles.time}>11:24 PM</span>
-          </div>
-        </div>
-        {/* Additional messages would go here in state */}
-      </main>
+        ))}
+      </div>
 
-      {/* Input Area */}
-      <div className={styles.inputArea}>
+      {/* ── Fixed Input Dock ── */}
+      <section className={styles.inputArea}>
         <div className={styles.inputWrap}>
           <input 
             type="text" 
-            placeholder="Describe your dream trip (e.g., '10 days in Italy, focusing on food and art...')" 
+            placeholder="Describe your dream trip (e.g., '10 days in Italy, focusing on food and art, slow pace')" 
             className={styles.input}
           />
           <button className={styles.sendBtn}>
-            <BsSend size={18} />
+            <FiSend size={18} />
             SEND
           </button>
         </div>
-        <p className={styles.disclaimer}>SUPERJOURNEYS AI CAN MAKE MISTAKES. VERIFY IMPORTANT INFORMATION.</p>
-      </div>
+        <p className={styles.disclaimer}>
+          SUPERJOURNEYS AI CAN MAKE MISTAKES. VERIFY IMPORTANT INFORMATION.
+        </p>
+      </section>
       
-    </div>
+    </main>
   )
 }

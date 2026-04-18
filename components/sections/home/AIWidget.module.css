@@ -1,20 +1,22 @@
 .section {
-  background: var(--bg);
+  background: white;
   padding-bottom: var(--section-py);
+  padding-top: var(--section-py);
 }
 
-/* ── Ticker ── */
+/* ── Ticker (contained, above search bar) ── */
 .ticker {
   background: var(--accent);
-  padding: 10px 0;
+  border-radius: 10px;
+  padding: 20px 0;
   overflow: hidden;
-  margin-bottom: 60px;
+  width: 100%;
 }
 
 .tickerTrack {
   display: flex;
   gap: 0;
-  animation: ticker 24s linear infinite;
+  animation: ticker 15s linear infinite;
   white-space: nowrap;
 }
 
@@ -24,7 +26,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #fff;
+  color: #000000;
   padding: 0 24px;
   flex-shrink: 0;
 }
@@ -40,6 +42,10 @@
   grid-template-columns: 220px 1fr;
   gap: 48px;
   align-items: flex-start;
+}
+
+.inner > * {
+  min-width: 0;
 }
 
 /* ── Sidebar ── */
@@ -105,6 +111,8 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 /* ── Search ── */
@@ -120,9 +128,9 @@
   font-size: 15px;
   color: var(--text);
   background: var(--card);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-pill);
-  padding: 14px 56px 14px 22px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 56px 20px 22px;
   outline: none;
   transition: border-color var(--transition);
   box-shadow: var(--shadow-card);
@@ -139,7 +147,7 @@
   background: var(--accent);
   color: #fff;
   border: none;
-  border-radius: 50%;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -417,19 +425,28 @@
 @media (max-width: 1024px) {
   .inner {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .sidebar {
     position: static;
+    gap: 16px;
+  }
+
+  .sidebarHeading {
+    font-size: 20px;
   }
 
   .filters {
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 8px;
   }
 
   .filterBtn {
-    padding: 8px 14px;
+    padding: 8px 16px;
+    font-size: 13px;
+    background: var(--chip-bg);
   }
 
   .grid {
@@ -438,7 +455,23 @@
 }
 
 @media (max-width: 640px) {
+  .journeysHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .searchInput {
+    padding: 16px 50px 16px 16px;
+    font-size: 14px;
+  }
+
+  .searchBtn {
+    width: 32px;
+    height: 32px;
   }
 }

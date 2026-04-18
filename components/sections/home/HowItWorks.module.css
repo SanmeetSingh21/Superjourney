@@ -25,7 +25,7 @@
 
 .overline {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -366,15 +366,27 @@
 @media (max-width: 640px) {
   .cardTop {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .cardActions {
+    width: 100%;
+  }
+
+  .actionBtn, .actionBtnOutline {
+    flex: 1;
+    justify-content: center;
   }
 
   .dayContent {
     flex-direction: column;
     gap: 16px;
+    padding: 24px;
   }
 
   .dayNum {
-    font-size: 36px;
+    font-size: 32px;
   }
 }

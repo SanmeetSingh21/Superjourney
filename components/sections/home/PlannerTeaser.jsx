@@ -30,12 +30,10 @@ const messages = [
 export default function PlannerTeaser() {
   return (
     <>
-      {/* Ticker */}
+      {/* Tagline Strip */}
       <div className={styles.ticker}>
         <div className={styles.tickerTrack}>
-          {Array(6).fill('PLAN FREELY. ADJUST INSTANTLY. TRAVEL BOLDLY.').map((t, i) => (
-            <span key={i} className={styles.tickerItem}>{t}</span>
-          ))}
+          <span className={styles.tickerItem}>PLAN FREELY. ADJUST INSTANTLY. TRAVEL BOLDLY.</span>
         </div>
       </div>
 

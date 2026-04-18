@@ -25,11 +25,12 @@
 
 .overline {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
+  margin-bottom: -12px;
 }
 
 .heading {
@@ -165,10 +166,6 @@
   line-height: 1.2;
 }
 
-.cardTitleActive {
-  font-style: italic;
-}
-
 .selectBtn {
   display: inline-flex;
   align-items: center;
@@ -185,11 +182,14 @@
   border: none;
   cursor: pointer;
   width: fit-content;
-  transition: opacity var(--transition);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.selectBtn:hover {
-  opacity: 0.9;
+.card:hover .selectBtn {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ── Responsive ── */

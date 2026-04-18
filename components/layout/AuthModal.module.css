@@ -14,11 +14,17 @@
   background: #fdfaf5; /* Cream background matching the reference */
   border-radius: 32px;
   width: 100%;
-  max-width: 480px;
+  max-width: 520px;
   max-height: 90vh;
   overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
   position: relative;
+}
+
+.modal::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .closeBtn {
@@ -130,6 +136,46 @@
   color: rgba(0,0,0,0.3);
 }
 
+.countrySelect {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 700;
+  color: #c4683a;
+  outline: none;
+  cursor: pointer;
+  z-index: 5;
+  width: 90px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition);
+  z-index: 5;
+}
+.eyeBtn:hover {
+  color: #c4683a;
+}
+
 .primaryBtn {
   width: 100%;
   padding: 16px;
@@ -204,8 +250,22 @@
 @media (max-width: 600px) {
   .modal {
     border-radius: 20px;
+    max-width: 100%;
+    margin: 0 16px;
   }
   .content {
     padding: 40px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    margin: 0 10px;
+  }
+  .content {
+    padding: 32px 20px;
+  }
+  .heading {
+    font-size: 32px;
   }
 }

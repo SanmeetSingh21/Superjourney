@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { LuMapPin, LuPhone, LuMail } from 'react-icons/lu'
 import { FaInstagram, FaFacebook } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
@@ -14,6 +17,11 @@ const navLinks = [
 ]
 
 export default function Footer() {
+  const pathname = usePathname()
+  
+  // Hide footer on the planner page
+  if (pathname === '/planner') return null
+  
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>

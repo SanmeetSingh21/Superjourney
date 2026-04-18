@@ -12,9 +12,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body suppressHydrationWarning>
         <Navbar />
-        <main>{children}</main>
+        <main className="page-top">{children}</main>
         <Footer />
       </body>
+
     </html>
   )
 }

@@ -1,64 +1,38 @@
 'use client'
 
-import { useState } from 'react'
-import { FiSearch, FiEdit3, FiArrowUpRight, FiX } from 'react-icons/fi'
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { FiSearch, FiEdit3, FiArrowUpRight, FiX, FiImage } from 'react-icons/fi'
 import styles from './journal.module.css'
 
-const stories = [
-  {
-    id: 1,
-    title: 'The Reality of 14 Days in Japan: What Instagram Doesn\'t Show',
-    desc: 'Navigating train passes, queuing fatigue, and finding quiet moments in a country of 125 million people.',
-    tag: 'DESTINATION DEEP DIVES',
-    isBrand: true,
-    image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80'
-  },
-  {
-    id: 2,
-    title: 'Solo Female Travel: Finding Safety Without Sacrificing Adventure',
-    desc: 'Practical, tested advice from years of independent travel across South America and Southeast Asia.',
-    tag: 'SOLO TRAVEL & SAFETY',
-    isBrand: true,
-    image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80'
-  },
-  {
-    id: 3,
-    title: 'Points, Miles, and Reality',
-    desc: 'A grounded look at travel hacking. What works, what doesn\'t, and when it\'s better to just pay cash.',
-    tag: 'BUDGET TRAVEL STRATEGIES',
-    isBrand: true,
-    image: 'https://images.unsplash.com/photo-1473625247510-8ceb1760943f?w=800&q=80'
-  },
-  {
-    id: 4,
-    title: 'Why We Stopped Recommending Amalfi in August',
-    desc: 'The truth about shoulder seasons, overtourism, and where to go in Italy when everyone else is in Positano.',
-    tag: 'DESTINATION DEEP DIVES',
-    isBrand: false,
-    image: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80'
-  },
-  {
-    id: 5,
-    title: 'Decoding the French Dining Etiquette',
-    desc: 'How to order, when to tip, and why the waiter isn\'t ignoring you (probably).',
-    tag: 'CULTURE & DINING',
-    isBrand: false,
-    image: 'https://images.unsplash.com/photo-1550136513-548af4445338?w=800&q=80'
-  },
-  {
-    id: 6,
-    title: 'The Art of the "Hub and Spoke" Itinerary',
-    desc: 'Stop moving hotels every two days. How to build a base camp and actually relax on your vacation.',
-    tag: 'TRAVEL STRATEGY',
-    isBrand: true,
-    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80'
-  }
-]
+import { api } from '../../lib/apiClient'
+import { stories as storiesData } from '../../data/stories'
+
+
 
 export default function JournalPage() {
   const [activeTab, setActiveTab] = useState('ALL STORIES')
   const [search, setSearch] = useState('')
   const [modalOpen, setModalOpen] = useState(false)
+  const [stories, setStories] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Fetch stories on load
+  useEffect(() => {
+    const fetchStories = async () => {
+      try {
+        const data = await api.get('/api/journal')
+        // Assume data returns an array, fallback to mock if empty/error
+        setStories(data && data.length > 0 ? data : storiesData)
+      } catch (error) {
+        console.warn('Backend unavailable, using mock data for journal')
+        setStories(storiesData)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchStories()
+  }, [])
 
   // Filter logic
   const filteredStories = stories.filter(s => {
@@ -76,14 +50,14 @@ export default function JournalPage() {
           <div className={styles.heroLeft}>
             <p className={styles.overline}>The Superjourneys Journal</p>
             <h1 className={styles.heading}>
-              Travel smarter. <br />
+              Travel smarter, <br />
               <em className={styles.accent}>Not harder.</em>
             </h1>
           </div>
 
           <div className={styles.heroRight}>
             <p className={styles.sub}>
-              Real insights from 20 years of travel — so you don't waste time figuring things out.
+              Real insights from 20 years of travel <br></br> so you don't waste time figuring things out.
             </p>
             <button className={styles.primaryBtn} onClick={() => setModalOpen(true)}>
               <FiEdit3 size={14} /> Write Your Story
@@ -123,7 +97,7 @@ export default function JournalPage() {
 
           <div className={styles.grid}>
             {filteredStories.map(story => (
-              <article key={story.id} className={styles.articleCard}>
+              <Link key={story.id} href={`/journal/${story.id}`} className={styles.articleCard}>
                 <div className={styles.imgWrap}>
                   <img src={story.image} alt={story.title} className={styles.articleImg} />
                   <div className={styles.tagGroup}>
@@ -133,7 +107,7 @@ export default function JournalPage() {
                 </div>
                 <h3 className={styles.articleTitle}>{story.title}</h3>
                 <p className={styles.articleDesc}>{story.desc}</p>
-              </article>
+              </Link>
             ))}
           </div>
 
@@ -196,7 +170,11 @@ export default function JournalPage() {
                   className={styles.textarea} 
                   placeholder="Start writing your journey..."
                 ></textarea>
+                <button className={styles.imageUploadBtn}>
+                  <FiImage size={16} /> Add Images
+                </button>
               </div>
+
             </div>
 
             <div className={styles.modalFooter}>

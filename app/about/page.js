@@ -20,7 +20,7 @@ export default function AboutPage() {
         <div className={`container ${styles.heroInner}`}>
           <p className={styles.overline}>Origin &amp; Purpose</p>
           <h1 className={styles.heroHeading}>
-            Built on years of travel — not algorithms alone.
+            Built on years of travel, not algorithms alone.
           </h1>
           <div className={styles.heroParagraphs}>
             <p>

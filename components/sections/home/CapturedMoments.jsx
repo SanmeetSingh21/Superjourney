@@ -7,19 +7,7 @@ export default function CapturedMoments() {
     <section className={styles.section}>
       <div className={`container ${styles.inner}`}>
 
-        {/* Left — Images */}
-        <div className={styles.imagesWrap}>
-          <div className={styles.imgCard1}>
-            <img
-              src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&q=80"
-              alt="Cinque Terre"
-              className={styles.img}
-            />
-            <span className={styles.imgLabel}>Established · Twenty Six</span>
-          </div>
-        </div>
-
-        {/* Right — Text */}
+        {/* Top — Text */}
         <div className={styles.content}>
           <p className={styles.overline}>The Visual Archive</p>
           <h2 className={styles.heading}>
@@ -33,28 +21,39 @@ export default function CapturedMoments() {
             <BsStars size={13} />
             Explore Berry's Cam
           </Link>
+        </div>
 
-          {/* Floating images */}
-          <div className={styles.floatingImages}>
-            <div className={styles.imgCard2}>
-              <img
-                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80"
-                alt="Banff Canada"
-                className={styles.img}
-              />
-              <span className={styles.imgLabel2}>Banff, Canada</span>
-            </div>
-            <div className={styles.imgCard3}>
-              <img
-                src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=800&q=80"
-                alt="Venice"
-                className={styles.img}
-              />
-            </div>
+        {/* Bottom — Collage */}
+        <div className={styles.collage}>
+          <span className={styles.vintageText}>Established · Twenty Twenty Six</span>
+
+          <div className={`${styles.imgCard} ${styles.cardLeft}`}>
+            <img
+              src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&q=80"
+              alt="Cinque Terre"
+              className={styles.img}
+            />
+          </div>
+
+          <div className={`${styles.imgCard} ${styles.cardCenter}`}>
+            <img
+              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80"
+              alt="Banff Canada"
+              className={styles.img}
+            />
+            <span className={styles.imgLabel}>Banff, Canada</span>
+          </div>
+
+          <div className={`${styles.imgCard} ${styles.cardRight}`}>
+            <img
+              src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=800&q=80"
+              alt="Venice"
+              className={styles.img}
+            />
           </div>
         </div>
 
       </div>
     </section>
   )
-}
+}

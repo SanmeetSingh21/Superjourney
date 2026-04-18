@@ -1,100 +1,126 @@
 .section {
-  background: var(--bg);
-  padding: var(--section-py) 0;
+  background: #f7f2ea;
+  padding: 100px 0;
 }
 
 .inner {
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 64px;
 }
 
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
   text-align: center;
 }
 
 .heading {
   font-family: var(--font-heading);
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: 44px;
   font-weight: 800;
-  color: var(--text);
+  color: #1c1c1c;
 }
 
 .sub {
-  font-family: var(--font-heading);
-  font-size: 15px;
+  margin-top: 10px;
+  font-size: 16px;
   font-style: italic;
-  color: var(--muted);
+  color: #8a817c;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  align-items: start;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
 }
 
 .card {
-  background: var(--card);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  padding: 36px 32px;
+  background: #fdfbf8;
+  border-radius: 28px;
+  border: 1px solid #eadfd6;
+  padding: 40px 36px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 32px;
-  min-height: 280px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* subtle side notch */
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 36px;
+  background: #f7f2ea;
+  border: 1px solid #eadfd6;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.card::before {
+  left: -9px;
+  border-right: none;
+}
+
+.card::after {
+  right: -9px;
+  border-left: none;
 }
 
 .quote {
-  font-family: var(--font-heading);
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #3e3e3e;
   font-style: italic;
-  color: var(--text);
-  line-height: 1.75;
-  flex: 1;
 }
 
 .author {
+  margin-top: auto;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
+  background: #d16a2e;
 }
 
 .name {
-  font-family: var(--font-heading);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
-  color: var(--text);
+  color: #1c1c1c;
 }
 
 .role {
-  font-family: var(--font-body);
   font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
+  letter-spacing: 0.18em;
+  color: #a39a94;
   margin-top: 2px;
 }
 
+/* responsive */
+
 @media (max-width: 1024px) {
-  .grid { grid-template-columns: 1fr; }
-  .card { min-height: auto; }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
-  .card { padding: 24px 20px; }
+  .card {
+    padding: 28px 22px;
+  }
 }

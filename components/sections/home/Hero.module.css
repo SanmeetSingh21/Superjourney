@@ -9,7 +9,7 @@
 .bg {
   position: absolute;
   inset: 0;
-  background: url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=1600&q=80') center/cover no-repeat;
+  background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80') center/cover no-repeat;
   z-index: 0;
 }
 
@@ -17,10 +17,10 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    105deg,
-    rgba(10, 6, 2, 0.75) 0%,
-    rgba(10, 6, 2, 0.55) 60%,
-    rgba(10, 6, 2, 0.3) 100%
+    100deg,
+    rgba(8, 4, 2, 0.78) 0%,
+    rgba(8, 4, 2, 0.52) 50%,
+    rgba(8, 4, 2, 0.18) 100%
   );
   z-index: 1;
 }
@@ -30,12 +30,13 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 60px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 58px;
   align-items: center;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 52px;
+  padding-bottom: 72px;
 }
+
 
 /* ── Left Content ── */
 .content {
@@ -45,17 +46,17 @@
 }
 
 .overline {
-  font-family: var(--font-body);
-  font-size: 11px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 22px;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent);
 }
 
 .heading {
   font-family: var(--font-heading);
-  font-size: clamp(56px, 6vw, 88px);
+  font-size: clamp(40px, 6vw, 80px);
   font-weight: 900;
   line-height: 1.0;
   color: #fff;
@@ -69,7 +70,7 @@
 
 .sub {
   font-family: var(--font-heading);
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(24px, 3vw, 40px);
   font-weight: 700;
   color: #fff;
   line-height: 1.2;
@@ -121,23 +122,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 28px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  color: rgba(255, 255, 255, 0.85);
+  padding: 14px 22px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.78);
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   cursor: pointer;
   transition: background var(--transition), transform var(--transition);
+  white-space: nowrap;
 }
 
 .btnSecondary:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(50, 50, 50, 0.75);
   transform: translateY(-2px);
 }
 
@@ -149,17 +151,18 @@
 }
 
 .glassCard {
-  background: rgba(30, 30, 40, 0.55);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-xl);
-  padding: 32px;
+  background: rgba(20, 28, 40, 0.72);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  padding: 36px;
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 26px;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .cardTop {}
@@ -174,11 +177,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: rgba(224, 122, 47, 0.2);
+  width: 52px;
+  height: 52px;
+  background: rgba(224, 122, 47, 0.25);
   color: var(--accent);
   border-radius: var(--radius-md);
+  border: 1px solid rgba(224, 122, 47, 0.3);
   flex-shrink: 0;
 }
 
@@ -190,21 +194,22 @@
 }
 
 .cardBadgeSub {
-  font-family: var(--font-body);
+  font-family: 'Courier New', Courier, monospace;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
-  margin-top: 2px;
+  color: var(--accent);
+  margin-top: 3px;
+  opacity: 0.8;
 }
 
 .quote {
   font-family: var(--font-heading);
-  font-size: 17px;
+  font-size: 18px;
   font-style: italic;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.65;
   border: none;
   padding: 0;
 }
@@ -216,11 +221,12 @@
 }
 
 .reviewerAvatar {
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #b0a898, #6b6b6b);
+  background: linear-gradient(135deg, #8a9ab0, #4a5568);
   flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .reviewerName {
@@ -231,13 +237,14 @@
 }
 
 .reviewerRole {
-  font-family: var(--font-body);
+  font-family: 'Courier New', Courier, monospace;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--accent);
   margin-top: 2px;
+  opacity: 0.8;
 }
 
 /* ── Responsive ── */
@@ -258,17 +265,24 @@
 
 @media (max-width: 640px) {
   .inner {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    gap: 40px;
   }
 
   .actions {
     flex-direction: column;
+    width: 100%;
   }
 
   .btnPrimary,
   .btnSecondary {
     width: 100%;
     justify-content: center;
+  }
+  
+  .glassCard {
+    padding: 24px;
+    gap: 20px;
   }
 }

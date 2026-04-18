@@ -1,6 +1,47 @@
+'use client'
+
+import { useState } from 'react'
 import { BsStars } from 'react-icons/bs'
 import { FiDownload, FiShare2 } from 'react-icons/fi'
 import styles from './HowItWorks.module.css'
+
+const days = [
+  {
+    num: '01',
+    title: 'Arrival in Tokyo + Shinjuku',
+    subtitle: '(Neon Lights & City Views)',
+    text: 'Arrive at Narita/Haneda → Check-in at Shinjuku → Explore Omoide Yokocho → Tokyo Metropolitan Government Building (Free Observation Deck) → Dinner in Shinjuku Golden Gai',
+    advantage: 'Shinjuku provides the quintessential Tokyo experience immediately. Easy access from airports and endless dining/entertainment options.',
+  },
+  {
+    num: '02',
+    title: 'Harajuku + Shibuya',
+    subtitle: '(Culture & Pop Trends)',
+    text: 'Meiji Jingu Shrine → Takeshita Street (Harajuku) → Omotesando → Shibuya Crossing → Hachiko Statue → Shibuya Sky Observation Deck',
+    advantage: 'A perfect blend of serene tradition (Meiji Jingu) and vibrant modern Tokyo (Shibuya/Harajuku).',
+  },
+  {
+    num: '03',
+    title: 'Asakusa + Akihabara',
+    subtitle: '(Old Tokyo & Tech)',
+    text: 'Senso-ji Temple (Asakusa) → Nakamise Shopping Street → Sumida River Cruise → Akihabara Electric Town → Retro Gaming Arcades',
+    advantage: 'Experience the contrast between the historic Asakusa district and the futuristic tech hub of Akihabara.',
+  },
+  {
+    num: '04',
+    title: 'Day Trip to Hakone',
+    subtitle: '(Mt. Fuji Views & Onsen)',
+    text: 'Shinjuku Station → Hakone-Yumoto → Hakone Open-Air Museum → Lake Ashi Cruise → Hakone Ropeway (Mt. Fuji views) → Onsen Soak',
+    advantage: 'A necessary escape from the city. Hakone offers stunning nature and the iconic Mt. Fuji views.',
+  },
+  {
+    num: '05',
+    title: 'Tsukiji + Departure',
+    subtitle: '(Sushi & Souvenirs)',
+    text: 'Tsukiji Outer Market (Sushi breakfast) → Ginza Shopping District → Last-minute souvenir shopping → Departure',
+    advantage: 'Tsukiji is the best place for a final authentic Japanese breakfast before heading to the airport.',
+  },
+]
 
 const benefits = [
   "You don't stand in 2–3 hour queues",
@@ -10,6 +51,9 @@ const benefits = [
 ]
 
 export default function HowItWorks() {
+  const [activeDay, setActiveDay] = useState(0)
+  const day = days[activeDay]
+
   return (
     <section className={styles.section}>
       <div className={`container ${styles.inner}`}>
@@ -48,10 +92,14 @@ export default function HowItWorks() {
                   <FiShare2 size={14} /> Share
                 </button>
                 <div className={styles.dayPills}>
-                  {['01', '02', '03', '04', '05'].map((d, i) => (
-                    <span key={d} className={`${styles.dayPill} ${i === 0 ? styles.dayPillActive : ''}`}>
-                      {d}
-                    </span>
+                  {days.map((d, i) => (
+                    <button
+                      key={d.num}
+                      onClick={() => setActiveDay(i)}
+                      className={`${styles.dayPill} ${activeDay === i ? styles.dayPillActive : ''}`}
+                    >
+                      {d.num}
+                    </button>
                   ))}
                 </div>
               </div>
@@ -59,27 +107,20 @@ export default function HowItWorks() {
 
             <div className={styles.dayContent}>
               <div className={styles.dayNumber}>
-                <span className={styles.dayNum}>01</span>
+                <span className={styles.dayNum}>{day.num}</span>
                 <span className={styles.dayLabel}>DAY</span>
               </div>
               <div className={styles.dayBody}>
-                <h4 className={styles.dayTitle}>Arrival in Tokyo + Shinjuku</h4>
-                <p className={styles.daySubtitle}>(Neon Lights &amp; City Views)</p>
-                <p className={styles.dayText}>
-                  Arrive at Narita/Haneda → Check-in at Shinjuku → Explore Omoide
-                  Yokocho → Tokyo Metropolitan Government Building (Free
-                  Observation Deck) → Dinner in Shinjuku Golden Gai
-                </p>
+                <h4 className={styles.dayTitle}>{day.title}</h4>
+                <p className={styles.daySubtitle}>{day.subtitle}</p>
+                <p className={styles.dayText}>{day.text}</p>
 
                 <div className={styles.advantageBox}>
                   <div className={styles.advantageHeader}>
                     <BsStars size={13} />
                     <span>SuperJourneys Advantage</span>
                   </div>
-                  <p className={styles.advantageText}>
-                    Shinjuku provides the quintessential Tokyo experience immediately.
-                    Easy access from airports and endless dining/entertainment options.
-                  </p>
+                  <p className={styles.advantageText}>{day.advantage}</p>
                 </div>
               </div>
             </div>
