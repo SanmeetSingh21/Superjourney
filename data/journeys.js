@@ -165,7 +165,7 @@ export const journeys = [
       insight: 'Sub-zero temperatures expected at peak altitude.'
     },
     bookings: [
-      { id: 'b1', name: 'Glacier Express', icon: 'train', bookUrl:'' }
+      { id: 'b1', name: 'Glacier Express', icon: 'train', bookUrl:'https://www.expedia.com/' }
     ],
     itineraryDays: [
       {
@@ -202,7 +202,7 @@ export const journeys = [
       insight: 'Extreme wind gusts on the south coast.'
     },
     bookings: [
-      { id: 'b1', name: 'Blue Lagoon Entry', icon: 'ticket' }
+      { id: 'b1', name: 'Blue Lagoon Entry', icon: 'ticket', bookUrl:'https://www.expedia.com/' }
     ],
     itineraryDays: [
       {
@@ -239,7 +239,7 @@ export const journeys = [
       insight: 'Perfect Mediterranean summer weather.'
     },
     bookings: [
-      { id: 'b1', name: 'Catamaran Sunset Cruise', icon: 'ticket' }
+      { id: 'b1', name: 'Catamaran Sunset Cruise', icon: 'ticket', bookUrl:'https://www.expedia.com/' }
     ],
     itineraryDays: [
       {
