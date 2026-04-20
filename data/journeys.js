@@ -165,7 +165,7 @@ export const journeys = [
       insight: 'Sub-zero temperatures expected at peak altitude.'
     },
     bookings: [
-      { id: 'b1', name: 'Glacier Express', icon: 'train' }
+      { id: 'b1', name: 'Glacier Express', icon: 'train', bookUrl:'' }
     ],
     itineraryDays: [
       {

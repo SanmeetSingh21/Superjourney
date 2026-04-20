@@ -39,10 +39,10 @@ export default function GetInspiredPage() {
           </p>
 
           <div className={styles.actions}>
-            <button className={styles.btnPrimary}>
+            <Link href="/planner" className={styles.btnPrimary}>
               <BsStars size={16} />
               PLAN MY ITINERARY →
-            </button>
+            </Link>
             <div className={styles.socialProof}>
               <div className={styles.avatarGroup}>
                 <div className={styles.avatar} style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80)', backgroundSize: 'cover' }}></div>
