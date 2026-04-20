@@ -79,6 +79,20 @@
   min-height: 180px;
   /* position/width/left/top/transition set inline by JS */
   box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+}
+
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
 }
 
 .card:hover .cardTitle {

@@ -203,6 +203,8 @@
   border: 1px solid var(--border);
   box-shadow: var(--shadow-card);
   transition: transform var(--transition), box-shadow var(--transition);
+  text-decoration: none;
+  color: inherit;
 }
 
 .card:hover {
@@ -419,6 +421,18 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.noResults {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--muted);
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
 }
 
 /* ── Responsive ── */

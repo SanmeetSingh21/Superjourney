@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import Link from 'next/link'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { BsAirplaneFill, BsPeopleFill, BsChatSquareFill, BsBookFill, BsWalletFill, BsCollectionFill } from 'react-icons/bs'
 import styles from './Features.module.css'
@@ -10,31 +11,37 @@ const features = [
     icon: <BsAirplaneFill size={18} />,
     title: 'Upload & Auto-Plan',
     desc: 'Upload flight tickets and hotel confirmations. SuperJourneys reads them and builds a structured itinerary.',
+    link: '/planner',
   },
   {
     icon: <BsPeopleFill size={18} />,
     title: 'Collaborate with Friends',
     desc: 'Invite your travel crew. Everyone can suggest, vote, and rearrange the plan in real time.',
+    link: '/planner',
   },
   {
     icon: <BsChatSquareFill size={18} />,
     title: 'Travel Blog Studio',
     desc: "Write your travel stories, attach photos, and publish them to SuperJourneys' public feed.",
+    link: '/journal',
   },
   {
     icon: <BsBookFill size={18} />,
     title: 'Book Everything',
     desc: 'Hotels, attractions, activities, and transport — book directly through Viator & GetYourGuide links within your itinerary.',
+    link: '/planner',
   },
   {
     icon: <BsWalletFill size={18} />,
     title: 'Smart Budgeting',
     desc: 'Track your expenses in real-time. Split bills with friends and keep your travel finances in check.',
+    link: '/planner',
   },
   {
     icon: <BsCollectionFill size={18} />,
     title: 'Preset Itineraries',
     desc: 'Access 500+ hand-crafted itineraries by top travel influencers and local experts.',
+    link: '/get-inspired',
   },
 ]
 
@@ -140,14 +147,16 @@ export default function Features() {
                     : 'none',
                 } : undefined}
               >
-                <div className={styles.cardTop}>
-                  <span className={styles.iconWrap}>{f.icon}</span>
-                  <button className={styles.arrowBtn} aria-label="Learn more">
-                    <FiArrowUpRight size={14} />
-                  </button>
-                </div>
-                <h3 className={styles.cardTitle}>{f.title}</h3>
-                <p className={styles.cardDesc}>{f.desc}</p>
+                <Link href={f.link} className={styles.cardInner}>
+                  <div className={styles.cardTop}>
+                    <span className={styles.iconWrap}>{f.icon}</span>
+                    <span className={styles.arrowBtn}>
+                      <FiArrowUpRight size={14} />
+                    </span>
+                  </div>
+                  <h3 className={styles.cardTitle}>{f.title}</h3>
+                  <p className={styles.cardDesc}>{f.desc}</p>
+                </Link>
               </div>
             )
           })}

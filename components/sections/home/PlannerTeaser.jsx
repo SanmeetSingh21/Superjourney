@@ -1,6 +1,6 @@
 import { BsStars } from 'react-icons/bs'
 import styles from './PlannerTeaser.module.css'
-
+import Link from 'next/link';
 const steps = [
   {
     number: '01',
@@ -80,10 +80,12 @@ export default function PlannerTeaser() {
               </div>
             </div>
 
-            <button className={styles.ctaBtn}>
-              <BsStars size={14} />
-              Try Hybrid AI Planner Now
-            </button>
+            <Link href="/planner">
+              <button className={styles.ctaBtn}>
+                <BsStars size={14} />
+                Try Hybrid AI Planner Now
+              </button>
+            </Link>
           </div>
 
         </div>

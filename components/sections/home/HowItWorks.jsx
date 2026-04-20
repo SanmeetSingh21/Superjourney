@@ -85,9 +85,13 @@ export default function HowItWorks() {
                 <h3 className={styles.tripTitle}>5 Days in Japan</h3>
               </div>
               <div className={styles.cardActions}>
-                <button className={styles.actionBtn}>
+                <a 
+                  href="/japan-itinerary.pdf" 
+                  download 
+                  className={styles.actionBtn}
+                >
                   <FiDownload size={14} /> Download
-                </button>
+                </a>
                 <button className={styles.actionBtnOutline}>
                   <FiShare2 size={14} /> Share
                 </button>

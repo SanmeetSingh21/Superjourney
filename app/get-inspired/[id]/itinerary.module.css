@@ -1,40 +1,37 @@
 .page {
-  background: #fff;
+  background: #FDF9F3; /* Soft cream background from image */
   min-height: 100vh;
+  color: var(--text);
 }
 
 .backLink {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #fff;
   margin-bottom: 32px;
   font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  transition: color var(--transition);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(4px);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  text-decoration: none;
 }
-
-.backLink:hover {
-  color: #fff;
-}
-
-/* Utilities */
-.flex { display: flex; }
-.itemsCenter { align-items: center; }
-.gap6 { gap: 24px; }
-.inline { display: inline-block; vertical-align: middle; }
-.mr2 { margin-right: 8px; }
 
 /* ── Hero ── */
 .hero {
   position: relative;
-  height: 85vh;
-  min-height: 600px;
-  overflow: hidden;
+  height: 90vh;
+  min-height: 700px;
   display: flex;
-  align-items: flex-end;
-  padding-bottom: 80px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
 }
 
 .heroBg {
@@ -52,17 +49,13 @@
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
   z-index: 1;
 }
 
 .heroInner {
   position: relative;
   z-index: 2;
-  width: 100%;
-}
-
-.heroContent {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
@@ -70,144 +63,144 @@
 
 .heroHeading {
   font-family: var(--font-heading);
-  font-size: clamp(80px, 12vw, 180px);
+  font-size: clamp(60px, 12vw, 160px);
   font-weight: 900;
   line-height: 0.85;
   color: #fff;
   letter-spacing: -0.04em;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
+  text-transform: capitalize;
 }
 
 .heroItalic {
   font-style: italic;
+  font-weight: 400;
   color: var(--accent);
-  display: inline-block;
-}
-
-.heroActions {
-  display: flex;
-  align-items: center;
-  gap: 24px;
 }
 
 .startBtn {
   background: var(--accent);
   color: #fff;
-  padding: 18px 40px;
+  padding: 18px 42px;
   border-radius: var(--radius-pill);
   font-family: var(--font-body);
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: transform var(--transition);
   border: none;
   cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 10px 30px rgba(225, 121, 67, 0.3);
 }
 
 .startBtn:hover {
   transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(225, 121, 67, 0.4);
 }
 
-/* ── Route Visualizer ── */
+/* ── Route Section ── */
 .routeSection {
-  padding: 120px 0;
+  padding: 140px 0;
   position: relative;
-  overflow: hidden;
+  background: #FDF9F3;
   text-align: center;
+  overflow: hidden;
 }
 
 .routeBgText {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -55%);
   font-family: var(--font-heading);
-  font-size: 32vw;
+  font-size: 30vw;
   font-weight: 900;
-  color: rgba(26, 26, 26, 0.03);
+  color: rgba(0, 0, 0, 0.02);
   pointer-events: none;
   z-index: 0;
+  letter-spacing: -0.05em;
 }
 
 .routeInner {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 48px;
 }
 
 .routeLabel {
   font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent);
+  margin-bottom: 12px;
 }
 
 .routeTitle {
   font-family: var(--font-heading);
-  font-size: 48px;
+  font-size: clamp(32px, 5vw, 64px);
   font-weight: 800;
-  color: var(--text);
-  margin-bottom: 20px;
+  color: #1a1a1a;
+  margin-bottom: 64px;
 }
 
 .routeTrack {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
 .routeNode {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 12px;
+  background: #fff;
+  padding: 10px 24px 10px 10px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 .nodeCircle {
-  width: 56px;
-  height: 56px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--muted);
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent);
 }
 
 .nodeName {
   font-family: var(--font-heading);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  color: var(--text);
+  color: #1a1a1a;
 }
 
 /* ── Widgets Grid ── */
 .widgetsGrid {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 24px;
+  padding: 0 24px 120px;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 32px;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 40px;
 }
 
-.widgetBox {
-  background: var(--card);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  padding: 40px;
+.widgetCard {
+  background: #fff;
+  border-radius: 24px;
+  padding: 48px;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.02);
 }
 
 .weatherWidget {
@@ -216,22 +209,42 @@
   gap: 24px;
 }
 
-.weatherIcon {
-  width: 64px;
-  height: 64px;
-  background: var(--chip-bg);
-  border-radius: var(--radius-lg);
+.widgetLabel {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.widgetTitle {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.weatherMain {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--accent);
+  gap: 24px;
+  margin-top: 10px;
 }
 
 .weatherTemp {
   font-family: var(--font-heading);
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--text);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.weatherDesc {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
 }
 
 .bookingsWidget {
@@ -241,222 +254,257 @@
 }
 
 .bookingsList {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .bookingItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-lg);
-  transition: border-color var(--transition);
+  padding: 14px 20px;
+  background: #FDF9F3;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  transition: all var(--transition);
 }
 
 .bookingItem:hover {
-  border-color: var(--text);
+  background: #fff;
+  border-color: var(--accent);
+  transform: translateX(4px);
 }
 
 .bookingLeft {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
-.bookingIcon {
+.bookingNum {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 800;
   color: var(--accent);
+  width: 20px;
 }
 
 .bookingName {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
 }
 
-.addBtn {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border);
-  background: transparent;
+.bookingActions {
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  gap: 12px;
+}
+
+.bookNowBtn {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
   transition: all var(--transition);
 }
 
-.addBtn:hover {
+.bookNowBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.addLinkBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.addLinkBtn:hover {
   background: var(--text);
   color: #fff;
   border-color: var(--text);
 }
 
-/* ── Journey Content ── */
-.journeySection {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 100px 24px;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 64px;
-  align-items: flex-start;
-}
-
-.journeyTitle {
-  font-family: var(--font-heading);
-  font-size: 40px;
-  font-weight: 800;
-  color: var(--text);
-  margin-bottom: 48px;
-}
-
-.dayAccordion {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.dayCard {
-  background: var(--card);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  overflow: hidden;
-}
-
-.dayHeader {
-  padding: 24px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.dayLabel {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.dayNum {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.dayName {
-  font-family: var(--font-heading);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.dayContent {
-  padding: 0 32px 32px;
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--muted);
-  font-style: italic;
-}
-
-.stickyMap {
-  position: sticky;
-  top: 100px;
-}
-
-.mapBox {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #e5f6ed;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  overflow: hidden;
-}
-
-.mapBox img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ── AI Prompt ── */
+/* ── AI Banner ── */
 .aiBanner {
-  background: var(--chip-bg);
-  padding: 140px 0;
+  background: #FDF9F3;
+  padding: 100px 0;
   text-align: center;
 }
 
 .aiInner {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
 }
 
-.aiOverline {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.aiHeading {
-  font-family: var(--font-heading);
-  font-size: 48px;
-  font-weight: 800;
-  color: var(--text);
-}
-
-.aiSearch {
-  width: 100%;
+.aiSearchBox {
+  margin-top: 48px;
   background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 8px;
+  padding: 12px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 .aiInput {
   flex: 1;
   border: none;
-  padding: 16px 24px;
-  outline: none;
   font-family: var(--font-body);
   font-size: 16px;
+  padding: 12px 24px;
+  outline: none;
 }
 
 .aiSubmit {
-  background: var(--text);
+  background: #1a1a1a;
   color: #fff;
   border: none;
   padding: 16px 32px;
-  border-radius: var(--radius-sm);
+  border-radius: 12px;
   font-family: var(--font-body);
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   cursor: pointer;
 }
 
+/* ── Journey Content (Timeline + Map) ── */
+.journeySection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.journeyTitle {
+  font-family: var(--font-heading);
+  font-size: 56px;
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 64px;
+  letter-spacing: -0.02em;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+}
+
+.dayCard {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 32px;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.dayCardActive {
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(225, 121, 67, 0.08);
+}
+
+.dayCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.dayHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dayTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--muted);
+}
+
+.dayLabel {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.dayTitle {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.dayDesc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.03);
+}
+
+.mapContainer {
+  position: sticky;
+  top: 120px;
+}
+
+.mapWrapper {
+  aspect-ratio: 1;
+  background: #e5f6ed;
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.mapWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Footer CTA ── */
+.footerCta {
+  padding: 160px 0;
+  text-align: center;
+  background: #fff;
+}
+
 @media (max-width: 1024px) {
-  .journeySection {
+  .journeySection, .widgetsGrid {
     grid-template-columns: 1fr;
-  }
-  .widgetsGrid {
-    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }

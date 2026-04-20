@@ -9,19 +9,17 @@ import {
   FiArrowLeft, 
   FiPlus, 
   FiMapPin, 
-  FiActivity, 
-  FiInfo,
-  FiChevronDown,
-  FiChevronUp,
-  FiSearch
+  FiArrowRight,
+  FiSearch,
+  FiPlusCircle,
+  FiMinusCircle
 } from 'react-icons/fi'
-import { FaCloudSun, FaBed, FaTicketAlt } from 'react-icons/fa'
 
 export default function ItineraryPage() {
   const params = useParams()
   const id = parseInt(params.id)
   const journey = journeys.find(j => j.id === id)
-  const [openDay, setOpenDay] = useState(1)
+  const [activeDay, setActiveDay] = useState(1)
 
   if (!journey) {
     return (
@@ -30,19 +28,6 @@ export default function ItineraryPage() {
         <Link href="/get-inspired">Back to Inspiration</Link>
       </div>
     )
-  }
-
-  const toggleDay = (day) => {
-    setOpenDay(openDay === day ? null : day)
-  }
-
-  const getBookingIcon = (type) => {
-    switch(type) {
-      case 'ticket': return <FaTicketAlt size={18} />
-      case 'bed': return <FaBed size={18} />
-      case 'train': return <FiActivity size={18} />
-      default: return <FiInfo size={18} />
-    }
   }
 
   return (
@@ -55,16 +40,15 @@ export default function ItineraryPage() {
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroInner}>
-          <div className={styles.heroContent}>
-            <Link href="/get-inspired" className={styles.backLink}>
-              <FiArrowLeft /> BACK
-            </Link>
-            <h1 className={styles.heroHeading}>
-              {journey.titlePrefix} <span className={styles.heroItalic}>{journey.titleItalic}</span>
-            </h1>
-            <div className={styles.heroActions}>
-              <button className={styles.startBtn}>START YOUR JOURNEY</button>
-            </div>
+          <Link href="/get-inspired" className={styles.backLink}>
+            <FiArrowLeft /> BACK TO EXPLORE
+          </Link>
+          <h1 className={styles.heroHeading}>
+            {journey.titlePrefix} <br />
+            <span className={styles.heroItalic}>{journey.titleItalic}</span> Itinerary
+          </h1>
+          <div className={styles.heroActions}>
+            <button className={styles.startBtn}>GET THE FULL PLAN</button>
           </div>
         </div>
       </section>
@@ -73,10 +57,9 @@ export default function ItineraryPage() {
       <section className={styles.routeSection}>
         <div className={styles.routeBgText}>ROUTE</div>
         <div className={`container ${styles.routeInner}`}>
-          <div className={styles.routeHeader}>
-            <p className={styles.routeLabel}>THE PATHS LESS TRAVELED</p>
-            <h2 className={styles.routeTitle}>The Path Less Traveled</h2>
-          </div>
+          <p className={styles.routeLabel}>CURATED TRAVEL INTELLIGENCE</p>
+          <h2 className={styles.routeTitle}>The Path Less Traveled</h2>
+          
           <div className={styles.routeTrack}>
             {journey.routeNodes.map((node, i) => (
               <div key={node} className={styles.routeNode}>
@@ -91,46 +74,46 @@ export default function ItineraryPage() {
       {/* ── Widgets ── */}
       <section className={styles.widgetsGrid}>
         {/* Weather */}
-        <div className={styles.widgetBox}>
+        <div className={styles.widgetCard}>
           <div className={styles.weatherWidget}>
-            <p className={styles.routeLabel}>WEATHER FORECAST</p>
-            <h3 className={styles.routeTitle}>Weather Forecast</h3>
-            <p className={styles.dayText} style={{ fontStyle: 'normal', marginBottom: '20px' }}>
+            <p className={styles.widgetLabel}>WEATHER FORECAST</p>
+            <h3 className={styles.widgetTitle}>Weather Forecast</h3>
+            <p className={styles.dayDesc} style={{ fontStyle: 'normal', margin: 0 }}>
               Data-backed insights based on your {journey.days}-day stay pattern to ensure you pack exactly what you need.
             </p>
-            <div className={`${styles.flex} ${styles.itemsCenter} ${styles.gap6}`}>
-              <div className={styles.weatherIcon}>
-                <FaCloudSun size={32} />
-              </div>
-              <div>
-                <div className={styles.weatherTemp}>{journey.weather.condition}</div>
-                <div className={styles.nodeName} style={{ color: 'var(--accent)' }}>{journey.weather.temp}</div>
+            <div className={styles.weatherMain}>
+              <div className={styles.weatherTemp}>{journey.weather.temp.split(' ')[0]}</div>
+              <div className={styles.weatherDesc}>
+                {journey.weather.condition} <br />
+                <span style={{ color: 'var(--muted)', fontSize: '14px', fontWeight: 500 }}>{journey.weather.temp}</span>
               </div>
             </div>
-            <div className={styles.advantageBox} style={{ background: '#FDF7F2', marginTop: '20px', padding: '20px', borderRadius: '12px' }}>
-              <p className={styles.dayText} style={{ color: 'var(--text)', fontSize: '13px' }}>
-                <FiInfo className={`${styles.inline} ${styles.mr2}`} />
-                {journey.weather.insight}
+            <div style={{ background: '#FDF7F2', padding: '16px', borderRadius: '12px', marginTop: 'auto' }}>
+              <p className={styles.dayDesc} style={{ fontSize: '13px', margin: 0 }}>
+                💡 {journey.weather.insight}
               </p>
             </div>
           </div>
         </div>
 
         {/* Bookings */}
-        <div className={styles.widgetBox}>
+        <div className={styles.widgetCard}>
           <div className={styles.bookingsWidget}>
-            <p className={styles.routeLabel}>TRAVEL BOOKINGS</p>
-            <h3 className={styles.routeTitle}>Recommended Bookings for This Itinerary</h3>
+            <p className={styles.widgetLabel}>TRAVEL LOGISTICS</p>
+            <h3 className={styles.widgetTitle}>Recommended Bookings for this Itinerary</h3>
             <div className={styles.bookingsList}>
-              {journey.bookings.map(b => (
+              {journey.bookings.map((b, idx) => (
                 <div key={b.id} className={styles.bookingItem}>
                   <div className={styles.bookingLeft}>
-                    <span className={styles.bookingIcon}>{getBookingIcon(b.icon)}</span>
+                    <span className={styles.bookingNum}>0{idx + 1}</span>
                     <span className={styles.bookingName}>{b.name}</span>
                   </div>
-                  <button className={styles.addBtn} title="Add as booking link">
-                    <FiPlus size={14} />
-                  </button>
+                  <div className={styles.bookingActions}>
+                    <a href={b.bookUrl} target="_blank" rel="noopener noreferrer" className={styles.bookNowBtn}>Book Now</a>
+                    <button className={styles.addLinkBtn} title="Add to my plan">
+                      <FiPlus size={12} />
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
@@ -141,51 +124,55 @@ export default function ItineraryPage() {
       {/* ── Ask AI Prompt ── */}
       <section className={styles.aiBanner}>
         <div className={styles.aiInner}>
-          <p className={styles.aiOverline}>HYBRID AI-HUMAN GUIDANCE</p>
+          <p className={styles.widgetLabel}>HYBRID AI-HUMAN GUIDANCE</p>
           <h2 className={styles.aiHeading}>Ask Our Hybrid Ai</h2>
-          <p className={styles.sub}>
-            Not sure about fine details, packing essentials, or hidden gems along your route? Ask our AI and get real-world tips.
+          <p className={styles.dayDesc}>
+            Not sure about fine details, packing essentials, or hidden gems along your route? <br />
+            Ask our AI and get real-world tips curated by our editors.
           </p>
-          <div className={styles.aiSearch}>
-            <input type="text" placeholder="Ask anything about your journey..." className={styles.aiInput} />
+          <div className={styles.aiSearchBox}>
+            <input type="text" placeholder="Where do I find the best ramen in Shinjuku?" className={styles.aiInput} />
             <button className={styles.aiSubmit}>ASK SUPER AI</button>
           </div>
         </div>
       </section>
 
-      {/* ── Journey ── */}
+      {/* ── Journey Timeline + Map ── */}
       <section className={`container ${styles.journeySection}`}>
-        <div className={styles.journeyLeft}>
+        <div className={styles.timelineSide}>
           <h2 className={styles.journeyTitle}>Your Journey</h2>
-          <div className={styles.dayAccordion}>
+          <div className={styles.timeline}>
             {journey.itineraryDays.map(d => (
-              <div key={d.day} className={styles.dayCard}>
-                <div className={styles.dayHeader} onClick={() => toggleDay(d.day)}>
-                  <div className={styles.dayLabel}>
-                    <span className={styles.dayNum}>DAY {d.day}</span>
-                    <h4 className={styles.dayName}>{d.title}</h4>
+              <div 
+                key={d.day} 
+                className={`${styles.dayCard} ${activeDay === d.day ? styles.dayCardActive : ''}`}
+                onClick={() => setActiveDay(activeDay === d.day ? null : d.day)}
+              >
+                <div className={styles.dayHeader}>
+                  <div className={styles.dayTop}>
+                    <p className={styles.dayLabel}>DAY {d.day}</p>
+                    {activeDay === d.day ? <FiMinusCircle size={16} /> : <FiPlusCircle size={16} />}
                   </div>
-                  {openDay === d.day ? <FiChevronUp /> : <FiChevronDown />}
+                  <h4 className={styles.dayTitle}>{d.title}</h4>
                 </div>
-                {openDay === d.day && (
-                  <div className={styles.dayContent}>
+                {activeDay === d.day && (
+                  <p className={styles.dayDesc}>
                     {d.details}
-                  </div>
+                  </p>
                 )}
               </div>
             ))}
           </div>
         </div>
 
-        <div className={styles.journeyRight}>
-          <div className={styles.stickyMap}>
-             <div className={styles.mapBox}>
-                <img src="/map-placeholder.png" alt="Map View" style={{ opacity: 0.5 }} />
-                {/* Fallback pattern if image missing */}
-                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <div className="text-center">
-                    <FiMapPin size={48} className={styles.inline} style={{ margin: '0 auto 16px', display: 'block' }} />
-                    <p className="font-bold text-emerald-900/40">INTERACTIVE MAP VIEW</p>
+        <div className={styles.mapSide}>
+          <div className={styles.mapContainer}>
+             <div className={styles.mapWrapper}>
+                <img src="/map-placeholder.png" alt="Map View" style={{ opacity: 0.8 }} />
+                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(229, 246, 237, 0.4)' }}>
+                  <div style={{ textAlign: 'center' }}>
+                    <FiMapPin size={40} style={{ color: 'var(--accent)', marginBottom: '12px' }} />
+                    <p style={{ fontWeight: 800, fontSize: '12px', color: '#1a1a1a', letterSpacing: '0.1em' }}>LIVE ROUTE MAP</p>
                   </div>
                 </div>
              </div>
@@ -194,21 +181,19 @@ export default function ItineraryPage() {
       </section>
 
       {/* ── Final Footer AI Block ── */}
-      <section className={styles.aiBanner} style={{ background: '#fff' }}>
+      <section className={styles.footerCta}>
         <div className={styles.aiInner}>
-          <h2 className={styles.aiHeading}>Ready for your adventure?</h2>
-          <p className={styles.sub}>
-            Store your journey data with a single count - follow with the best guides for your plan.
+          <h2 className={styles.aiHeading} style={{ fontSize: '64px', marginBottom: '20px' }}>Ready for your adventure?</h2>
+          <p className={styles.dayDesc} style={{ fontSize: '18px', marginBottom: '60px' }}>
+            Store your journey data with a single click — follow with the best guides for your plan.
           </p>
-          <div className={styles.widgetBox} style={{ width: '100%', padding: '60px' }}>
-            <p className={styles.aiOverline}>HYBRID AI-HUMAN GUIDANCE</p>
+          
+          <div className={styles.widgetCard} style={{ textAlign: 'center', width: '100%' }}>
+            <p className={styles.widgetLabel}>HYBRID AI-HUMAN GUIDANCE</p>
             <h2 className={styles.aiHeading}>Ask Our Hybrid Ai</h2>
-            <p className={styles.sub}>
-              Not sure about fine details, packing essentials, or hidden gems along your route? Ask our AI and get real-world tips.
-            </p>
-            <div className={styles.aiSearch} style={{ border: '1px solid #eee' }}>
-              <input type="text" placeholder="Ask anything about your journey..." className={styles.aiInput} />
-              <button className={styles.aiSubmit}>ASK SUPER AI</button>
+            <div className={styles.aiSearchBox}>
+              <input type="text" placeholder="How do I get from Tokyo to Osaka?" className={styles.aiInput} />
+              <button className={styles.aiSubmit}>SEND QUERY</button>
             </div>
           </div>
         </div>

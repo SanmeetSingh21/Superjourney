@@ -1,103 +1,36 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { FiSearch, FiArrowRight } from 'react-icons/fi'
 import { BsStars } from 'react-icons/bs'
 import styles from './AIWidget.module.css'
+import { journeys } from '../../../data/journeys'
 
-const filters = ['Trending Now', 'Seasonal Picks', 'Calm Escapes', 'Solo-Safe Journeys', 'Off-the-Grid Adventures', 'Weekend Quick Trips']
-
-const journeys = [
-  {
-    id: 1,
-    badge: 'Trending',
-    badgeColor: 'orange',
-    title: 'Perfect Japan Itinerary',
-    route: 'Tokyo → Osaka',
-    days: 9,
-    nights: 7,
-    rating: 4.9,
-    desc: 'Mt. Fuji at dawn. Kyoto\'s golden temples. Hiroshima\'s silence. Osaka\'s skyline.',
-    dep: 'TYO',
-    arr: 'OSA',
-    nights2: 7,
-    star: 4,
-    difficulty: 'Medium',
-    image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80',
-  },
-  {
-    id: 2,
-    badge: 'Popular',
-    badgeColor: 'green',
-    title: 'Bali Adventure',
-    route: 'Ubud → Seminyak',
-    days: 5,
-    nights: 4,
-    rating: 4.8,
-    desc: 'Rice terraces, sacred temples, and sunset beaches.',
-    dep: 'DEP',
-    arr: 'ARR',
-    nights2: 4,
-    star: 4,
-    difficulty: 'Easy',
-    image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80',
-  },
-  {
-    id: 3,
-    badge: 'Trending',
-    badgeColor: 'orange',
-    title: 'Swiss Alps Tour',
-    route: 'Zurich → Zermatt',
-    days: 5,
-    nights: 7,
-    rating: 4.9,
-    desc: 'Alpine peaks, crystal lakes, and mountain trains.',
-    dep: 'DEP',
-    arr: 'ARR',
-    nights2: 7,
-    star: 4,
-    difficulty: 'Hard',
-    image: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80',
-  },
-  {
-    id: 4,
-    badge: 'Popular',
-    badgeColor: 'green',
-    title: 'Iceland Ring Road',
-    route: 'Reykjavik Loop',
-    days: 10,
-    nights: 9,
-    rating: 4.9,
-    desc: 'Waterfalls, glaciers, and volcanic landscapes.',
-    dep: 'DEP',
-    arr: 'ARR',
-    nights2: 9,
-    star: 4,
-    difficulty: 'Hard',
-    image: 'https://images.unsplash.com/photo-1504829857797-ddff29c27927?w=600&q=80',
-  },
-  {
-    id: 5,
-    badge: 'Trending',
-    badgeColor: 'orange',
-    title: 'Santorini Escape',
-    route: 'Oia & Fira',
-    days: 4,
-    nights: 3,
-    rating: 4.7,
-    desc: 'Whitewashed villages and caldera sunsets.',
-    dep: 'DEP',
-    arr: 'ARR',
-    nights2: 3,
-    star: 4,
-    difficulty: 'Easy',
-    image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80',
-  },
-]
+const filters = ['All Journeys', 'Trending Now', 'Seasonal Picks', 'Calm Escapes', 'Solo-Safe Journeys', 'Off-the-Grid Adventures', 'Weekend Quick Trips']
 
 export default function AIWidget() {
-  const [activeFilter, setActiveFilter] = useState('Trending Now')
+  const [activeFilter, setActiveFilter] = useState('All Journeys')
   const [search, setSearch] = useState('')
+
+  const filteredJourneys = journeys.filter(j => {
+    const s = search.toLowerCase()
+    const matchesSearch = 
+      j.title.toLowerCase().includes(s) ||
+      j.route.toLowerCase().includes(s) ||
+      j.desc.toLowerCase().includes(s)
+    
+    if (!matchesSearch) return false
+
+    // Filter logic
+    if (activeFilter === 'Trending Now') return j.badge === 'Trending'
+    if (activeFilter === 'Calm Escapes') return j.style === 'relaxation'
+    if (activeFilter === 'Off-the-Grid Adventures') return j.style === 'adventure'
+    if (activeFilter === 'Solo-Safe Journeys') return j.style === 'culture'
+    if (activeFilter === 'Weekend Quick Trips') return j.days <= 5
+    
+    return true
+  })
 
   return (
     <section className={styles.section}>
@@ -152,16 +85,16 @@ export default function AIWidget() {
           {/* Journeys Header */}
           <div className={styles.journeysHeader}>
             <div>
-              <p className={styles.journeysMeta}>Trending Now</p>
-              <h3 className={styles.journeysTitle}>Top 5 Curated Journeys</h3>
+              <p className={styles.journeysMeta}>{activeFilter}</p>
+              <h3 className={styles.journeysTitle}>Top {filteredJourneys.length} Curated Journeys</h3>
             </div>
-            <span className={styles.journeysCount}>Showing 5 results</span>
+            <span className={styles.journeysCount}>Showing {filteredJourneys.length} results</span>
           </div>
 
           {/* Cards Grid */}
           <div className={styles.grid}>
-            {journeys.map((j) => (
-              <div key={j.id} className={styles.card}>
+            {filteredJourneys.map((j) => (
+              <Link key={j.id} href={`/get-inspired/${j.id}`} className={styles.card}>
                 {/* Image */}
                 <div className={styles.imageWrap}>
                   <img src={j.image} alt={j.title} className={styles.image} />
@@ -190,9 +123,9 @@ export default function AIWidget() {
                         <div key={a} className={styles.avatar} />
                       ))}
                     </div>
-                    <button className={styles.exploreBtn}>
+                    <div className={styles.exploreBtn}>
                       Explore <FiArrowRight size={12} />
-                    </button>
+                    </div>
                   </div>
 
                   {/* Boarding Pass */}
@@ -217,12 +150,17 @@ export default function AIWidget() {
                     <span>{j.difficulty}</span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
+          {filteredJourneys.length === 0 && (
+            <div className={styles.noResults}>
+              No journeys found matching your search or vibe. Try a different term or filter!
+            </div>
+          )}
         </div>
 
       </div>
     </section>
   )
-}
+}

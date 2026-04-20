@@ -127,6 +127,7 @@
   border: none;
   cursor: pointer;
   transition: opacity var(--transition);
+  text-decoration: none;
 }
 
 .actionBtn:hover { opacity: 0.85; }
@@ -145,6 +146,7 @@
   border: 1.5px solid var(--border);
   cursor: pointer;
   transition: border-color var(--transition);
+  text-decoration: none;
 }
 
 .actionBtnOutline:hover { border-color: var(--text); }

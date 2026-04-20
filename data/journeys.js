@@ -25,12 +25,12 @@ export const journeys = [
       insight: 'Expect brisk mornings and comfortable afternoons.'
     },
     bookings: [
-      { id: 'b1', name: 'Shibuya Sky Pass', icon: 'ticket' },
-      { id: 'b2', name: 'Kyoto Ryokan Stay', icon: 'bed' },
-      { id: 'b3', name: 'JR Pass (7 Days)', icon: 'train' },
-      { id: 'b4', name: 'Osaka Food Tour', icon: 'food' },
-      { id: 'b5', name: 'Mt. Fuji Excursion', icon: 'bus' },
-      { id: 'b6', name: 'Arashiyama Bamboo Grove', icon: 'ticket' },
+      { id: 'b1', name: 'Skyhop Bus Tour', icon: 'bus', bookUrl: 'https://www.viator.com/tours/Tokyo/Hop-On-Hop-Off-Tokyo-Bus-by-Skyhop-Bus/d334-366941P494?pid=P00061055&uid=U00182019&mcid=58086&currency=INR' },
+      { id: 'b2', name: 'Shinjuku Granbell Hotel', icon: 'bed', bookUrl: 'https://www.expedia.com/Tokyo-Hotels-Shinjuku-Granbell-Hotel.h7737490.Hotel-Information?chkin=2026-08-19&chkout=2026-08-21&x_pwa=1&rfrr=HSR&pwa_ts=1767879281070&referrerUrl=aHR0cHM6Ly93d3cuZXhwZWRpYS5jb20vSG90ZWwtU2VhcmNo&useRewards=false&rm1=a2&regionId=3593&destination=Tokyo%2C+Tokyo+Prefecture%2C+Japan&destType=MARKET&neighborhoodId=6155217&selected=7737490&latLong=35.681143%2C139.767208&sort=RECOMMENDED&userIntent=&searchId=76073537-eb70-49a1-9964-360036b42bfc&clickref=1100lCfrp8rv&affcid=US.DIRECT.PHG.1100l371341.1100l68075&ref_id=1100lCfrp8rv&my_ad=AFF.US.DIRECT.PHG.1100l371341.1100l68075&afflid=1100lCfrp8rv&affdtl=PHG.1100lCfrp8rv.PZUL1aFprW' },
+      { id: 'b3', name: 'JR Pass (7 Days)', icon: 'train', bookUrl: 'https://www.getyourguide.com/tokyo-l193/?partner_id=1LW0J7F&currency=USD&travel_agent=1&cmp=share_to_earn' },
+      { id: 'b4', name: 'Osaka Food Tour', icon: 'food', bookUrl: 'https://www.expedia.com/Osaka-Hotels-ART-HOTEL-Osaka-Bay-Tower.h21078021.Hotel-Information?chkin=2026-08-19&chkout=2026-08-21&x_pwa=1&rfrr=HSR&pwa_ts=1767879383657&referrerUrl=aHR0cHM6Ly93d3cuZXhwZWRpYS5jb20vSG90ZWwtU2VhcmNo&useRewards=false&rm1=a2&regionId=2697&destination=Osaka%2C+Osaka+Prefecture%2C+Japan&destType=MARKET&neighborhoodId=179226&selected=21078021&latLong=34.693738%2C135.502165&sort=RECOMMENDED&userIntent=&searchId=3959513a-a45c-4171-8dc7-bfe347e5c44b&clickref=1110l3QzJTGX&affcid=US.DIRECT.PHG.1100l371341.1100l68075&ref_id=1110l3QzJTGX&my_ad=AFF.US.DIRECT.PHG.1100l371341.1100l68075&afflid=1110l3QzJTGX&affdtl=PHG.1110l3QzJTGX.PZN9WFAKF6' },
+      { id: 'b5', name: 'Mt. Fuji Excursion', icon: 'bus', bookUrl: 'https://www.getyourguide.com/kyoto-l96826/kyoto-historical-nara-kyoto-bus-tour-t689294/?partner_id=1LW0J7F&currency=USD&travel_agent=1&cmp=share_to_earn' },
+      { id: 'b6', name: 'Arashiyama Bamboo Grove', icon: 'ticket', bookUrl: 'https://www.viator.com/tours/Hiroshima/Hiroshima-Miyajima-Private-Custom-Tour-with-Local-Guide/d4661-383992P8?pid=P00061055&uid=U00182019&mcid=58086&currency=INR' },
     ],
     itineraryDays: [
       {
