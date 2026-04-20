@@ -107,8 +107,8 @@ export const journeys = [
       insight: 'Tropical climate. Pack light and expect occasional afternoon showers.'
     },
     bookings: [
-      { id: 'b1', name: 'Onda Beach Boutique Hotel', icon: 'bed' },
-      { id: 'b2', name: 'Sacred Monkey Forest', icon: 'ticket' }
+      { id: 'b1', name: 'Onda Beach Boutique Hotel', icon: 'bed', bookUrl:'https://www.expedia.com/' },
+      { id: 'b2', name: 'Sacred Monkey Forest', icon: 'ticket', bookUrl:'https://www.viator.com/bali-monkey-forest' }
     ],
     itineraryDays: [
       {
