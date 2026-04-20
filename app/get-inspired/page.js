@@ -21,10 +21,18 @@ const stylesFilters = [
 
 export default function GetInspiredPage() {
   const [activeFilter, setActiveFilter] = useState('all')
+  const [searchTerm, setSearchTerm] = useState('')
 
-  const filteredJourneys = journeys.filter(j => 
-    activeFilter === 'all' ? true : j.style === activeFilter
-  )
+  const filteredJourneys = journeys.filter(j => {
+    const matchesStyle = activeFilter === 'all' ? true : j.style === activeFilter
+    const s = searchTerm.toLowerCase()
+    const matchesSearch = 
+      j.title.toLowerCase().includes(s) ||
+      j.route.toLowerCase().includes(s) ||
+      j.desc.toLowerCase().includes(s)
+    
+    return matchesStyle && matchesSearch
+  })
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
@@ -59,6 +67,8 @@ export default function GetInspiredPage() {
               type="text" 
               placeholder="Where to next?" 
               className={styles.searchInput}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
         </div>
@@ -82,65 +92,74 @@ export default function GetInspiredPage() {
       <section className={styles.gridSection}>
         {/* Cards Grid */}
           <div className={styles.grid}>
-            {filteredJourneys.map((j) => (
-              <Link key={j.id} href={`/get-inspired/${j.id}`} className={styles.card}>
-                {/* Image */}
-                <div className={styles.imageWrap}>
-                  <img src={j.image} alt={j.title} className={styles.image} />
-                  <span className={`${styles.badge} ${styles[j.badgeColor]}`}>
-                    <BsStars size={9} /> {j.badge}
-                  </span>
-                  <div className={styles.imageOverlay} />
-                  <div className={styles.imageText}>
-                    <h4 className={styles.imageTitle}>{j.title}</h4>
-                    <p className={styles.imageRoute}>{j.route}</p>
-                  </div>
-                </div>
-
-                {/* Body */}
-                <div className={styles.cardBody}>
-                  <div className={styles.cardMeta}>
-                    <span className={styles.metaItem}>📅 {j.days} Days · {j.nights} Nights</span>
-                    <span className={styles.metaRating}>⭐ {j.rating}</span>
-                  </div>
-
-                  <p className={styles.cardDesc}>{j.desc}</p>
-
-                  <div className={styles.cardFooter}>
-                    <div className={styles.avatars}>
-                      {[1,2,3].map(a => (
-                        <div key={a} className={styles.avatar} />
-                      ))}
-                    </div>
-                    <div className={styles.exploreBtn}>
-                      Explore <FiArrowRight size={12} />
+            {filteredJourneys.length > 0 ? (
+              filteredJourneys.map((j) => (
+                <Link key={j.id} href={`/get-inspired/${j.id}`} className={styles.card}>
+                  {/* ... card content ... */}
+                  <div className={styles.imageWrap}>
+                    <img src={j.image} alt={j.title} className={styles.image} />
+                    <span className={`${styles.badge} ${styles[j.badgeColor]}`}>
+                      <BsStars size={9} /> {j.badge}
+                    </span>
+                    <div className={styles.imageOverlay} />
+                    <div className={styles.imageText}>
+                      <h4 className={styles.imageTitle}>{j.title}</h4>
+                      <p className={styles.imageRoute}>{j.route}</p>
                     </div>
                   </div>
 
-                  {/* Boarding Pass */}
-                  <div className={styles.boardingPass}>
-                    <div className={styles.boardingLeft}>
-                      <p className={styles.boardingLabel}>Boarding Pass</p>
-                      <div className={styles.boardingRoute}>
-                        <span className={styles.routeCode}>{j.dep}</span>
-                        <span className={styles.routeIcon}>⇄</span>
-                        <span className={styles.routeCode}>{j.arr}</span>
-                        <span className={styles.firstClass}>First Class</span>
+                  <div className={styles.cardBody}>
+                    <div className={styles.cardMeta}>
+                      <span className={styles.metaItem}>📅 {j.days} Days · {j.nights} Nights</span>
+                      <span className={styles.metaRating}>⭐ {j.rating}</span>
+                    </div>
+
+                    <p className={styles.cardDesc}>{j.desc}</p>
+
+                    <div className={styles.cardFooter}>
+                      <div className={styles.avatars}>
+                        {[1,2,3].map(a => (
+                          <div key={a} className={styles.avatar} />
+                        ))}
+                      </div>
+                      <div className={styles.exploreBtn}>
+                        Explore <FiArrowRight size={12} />
                       </div>
                     </div>
-                    <div className={styles.boardingRight}>
-                      <div className={styles.qr} />
+
+                    <div className={styles.boardingPass}>
+                      <div className={styles.boardingLeft}>
+                        <p className={styles.boardingLabel}>Boarding Pass</p>
+                        <div className={styles.boardingRoute}>
+                          <span className={styles.routeCode}>{j.dep}</span>
+                          <span className={styles.routeIcon}>⇄</span>
+                          <span className={styles.routeCode}>{j.arr}</span>
+                          <span className={styles.firstClass}>First Class</span>
+                        </div>
+                      </div>
+                      <div className={styles.boardingRight}>
+                        <div className={styles.qr} />
+                      </div>
+                    </div>
+
+                    <div className={styles.cardDetails}>
+                      <span>{j.nights2} Nights</span>
+                      <span>⭐ {j.star} Star</span>
+                      <span>{j.difficulty}</span>
                     </div>
                   </div>
-
-                  <div className={styles.cardDetails}>
-                    <span>{j.nights2} Nights</span>
-                    <span>⭐ {j.star} Star</span>
-                    <span>{j.difficulty}</span>
-                  </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))
+            ) : (
+              <div className={styles.noResults}>
+                <BsStars size={48} className={styles.noResultsIcon} />
+                <h3>No journeys found Matching "{searchTerm}"</h3>
+                <p>Try a different destination, theme, or clearing your filters.</p>
+                <button onClick={() => {setSearchTerm(''); setActiveFilter('all')}} className={styles.clearBtn}>
+                  Clear All Filters
+                </button>
+              </div>
+            )}
           </div>
       </section>
 

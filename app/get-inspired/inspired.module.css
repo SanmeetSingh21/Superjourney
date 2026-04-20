@@ -447,3 +447,47 @@
     align-items: stretch;
   }
 }
+
+/* ── No Results ── */
+.noResults {
+  width: 100%;
+  padding: 100px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  color: var(--muted);
+}
+
+.noResultsIcon {
+  color: var(--accent);
+  opacity: 0.4;
+  margin-bottom: 10px;
+}
+
+.noResults h3 {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.clearBtn {
+  background: var(--text);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.clearBtn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
